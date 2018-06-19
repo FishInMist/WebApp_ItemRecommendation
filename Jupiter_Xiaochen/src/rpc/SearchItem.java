@@ -28,12 +28,12 @@ public class SearchItem extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
-		if (request.getParameter("username") != null) {
-			String username = request.getParameter("username");
-			out.print("Hello " + username);
-		}
+		out.println("<html><body>");
+		out.println("<h1>This is a HTML page</h1>");
+		out.println("</html></body>");
 		
 		out.close();
 	}
