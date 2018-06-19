@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Servlet implementation class SearchItem
  */
@@ -28,13 +32,17 @@ public class SearchItem extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html");
+		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
 		
-		out.println("<html><body>");
-		out.println("<h1>This is a HTML page</h1>");
-		out.println("</html></body>");
-		
+		JSONArray array = new JSONArray();
+		try {
+			array.put(new JSONObject().put("username", "Xiaochen"));
+			array.put(new JSONObject().put("username", "Saisai"));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		out.print(array);
 		out.close();
 	}
 
