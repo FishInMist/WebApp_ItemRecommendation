@@ -61,7 +61,7 @@ public class SearchItem extends HttpServlet {
 			e.printStackTrace();
 		}
 		JSONArray array = new JSONArray(list);
-		RpcHelper.writeJsonAray(response, array);
+		RpcHelper.writeJsonArray(response, array);
 	}
 
 	/**
