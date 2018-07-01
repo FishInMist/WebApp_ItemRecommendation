@@ -41,7 +41,7 @@ public class TicketMasterAPI {
 			//open a HTTP connection between the java application and ticketMaster based on URL
 			HttpURLConnection connection = (HttpURLConnection) new URL(URL + "?" + query).openConnection();
 			
-			//set request method t0 "GET"
+			//set request method to "GET"
 			connection.setRequestMethod("GET");
 			//send request to ticketMaster and get response, response code should be returned directly
 			//response code is saved in inputStream of connection
