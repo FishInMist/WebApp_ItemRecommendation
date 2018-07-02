@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -205,8 +206,31 @@ public class MySQLConnection implements DBConnection {
 
 	@Override
 	public String getFullname(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		if (conn == null) {
+			return "";
+		}
+		
+		String fullName = "";
+		try {
+			String sql = "SELECT ? FROM users WHERE userId = ?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setString(1, "first_name");
+			stmt.setString(2, userId);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				fullName += rs.getString("first_name");
+			}
+			stmt.setString(1, "last_name");
+			stmt.setString(2, userId);
+			rs = stmt.executeQuery();
+			if (rs.next()) {
+				fullName += " " + rs.getString("last_name");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return fullName;
 	}
 
 	@Override
