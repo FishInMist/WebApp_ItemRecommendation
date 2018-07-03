@@ -54,7 +54,7 @@ public class Item {
 	public JSONObject toJSONObject() {
 		JSONObject obj = new JSONObject();
 		try {
-			obj.put("itemId", itemId);
+			obj.put("item_id", itemId);
 			obj.put("name", name);
 			obj.put("rating", rating);
 			obj.put("address", address);
